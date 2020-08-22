@@ -27,6 +27,9 @@ app.post("/metric/:key", (req, res) => {
 
   service.updateKey(key, value);
   res.status(200).json({});
+
+  // remove old values at write-time after returning response
+  service.removeOldValues(key);
 })
 
 app.get("/metric/:key/sum", (req, res) => {
