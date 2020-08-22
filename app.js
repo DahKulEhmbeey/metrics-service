@@ -3,7 +3,8 @@ const bodyParser = require("body-parser");
 const service = require("./app.service");
 
 // Configure env variables
-require("dotenv")();
+require("dotenv").config();
+const PORT = process.env.PORT || 3001;
 
 
 app = express();
@@ -38,6 +39,6 @@ app.get("/metric/:key/sum", (req, res) => {
 });
 
 
-app.listen(process.env.PORT, () => {
-  console.log("App is listening at:", process.env.PORT);
+app.listen(PORT, () => {
+  console.log("App is listening at:", PORT);
 });
